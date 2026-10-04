@@ -9,6 +9,7 @@ let users = [];
 
 // Guarda quem está logado agora (começa ninguém)
 let currentUser = null;
+let posts = [];
 
 // Rota da página inicial: quando acessar "/", mostra o index.html
 app.get("/", (req, res) => {
@@ -55,6 +56,27 @@ app.post("/login", (req, res) => {
     // Deu certo! Guarda quem logou e vai para a Home
     currentUser = user;
     console.log("Logged in as:", currentUser.username);
+    res.redirect("/");
+});
+
+// Novo post
+app.post("/posts", (req, res) => {
+    // Descobre quem é o autor
+    let author;
+    if (currentUser) {
+        author = currentUser.username;   // tem alguém logado → usa o nome
+    } else {
+        author = "Anonymous";            // ninguém logado → Anonymous
+    }
+
+    // Guarda o post na lista
+    posts.push({
+        title: req.body.title,
+        content: req.body.content,
+        author: author
+    });
+
+    console.log(posts);
     res.redirect("/");
 });
 

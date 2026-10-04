@@ -1,2 +1,22 @@
+<!-- Menu de navegação -->
+<nav>
+    <a href="/">Home</a> |
+    <a href="/login">Login</a> |
+    <a href="/sign-up">Sign up</a>
+</nav>
+
 <h1>My Blog</h1>
-<p>This is my first page!</p>
+
+<!-- Aqui vão aparecer os posts (na Phase 2, com EJS) -->
+<h2>Posts</h2>
+<p>No posts yet.</p>
+
+<!-- Formulário para criar um post novo -->
+<h2>New post</h2>
+<form action="/posts" method="POST">
+    <input type="text" name="title" placeholder="Title">
+    <br>
+    <textarea name="content" placeholder="Write your post..."></textarea>
+    <br>
+    <button>Publish</button>
+</form>
